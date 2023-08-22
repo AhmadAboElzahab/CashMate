@@ -23,7 +23,7 @@ const withdraw = async (req, res) => {
     }
 
     if (requestedAmount > user.amount) {
-      return res.status(400).json("You can't withdraw more than your balance");
+      return res.status(400).json('You can not withdraw more than your balance');
     }
 
     const userLog = new UserLog({
@@ -120,7 +120,7 @@ const transfer = async (req, res) => {
     }
 
     if (requestedAmount > user.amount) {
-      return res.status(400).json("You can't withdraw more than your balance");
+      return res.status(400).json('You can not send more than your balance');
     }
 
     requestedUser.amount += requestedAmount;
