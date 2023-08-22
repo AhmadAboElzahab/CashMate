@@ -1,4 +1,5 @@
 const User = require('../models/user.model');
+const Transaction = require('../models/transaction.model');
 const UserLog = require('../models/personalLog.model'); // Make sure to import UserLog model
 const bcrypt = require('bcryptjs');
 
@@ -95,4 +96,50 @@ const getAmount = async (req, res) => {
   }
 };
 
-module.exports = { withdraw, deposit, getAmount };
+const transfer = async (req, res) => {
+  const userId = req.userId;
+  const { requestedAmount, password, requestedUserId } = req.body;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json('User not found');
+    }
+    const requestedUser = await User.findById(requestedUserId);
+    if (!requestedUser) {
+      return res.status(404).json('User to send not found');
+    }
+
+    if (requestedAmount < 0) {
+      return res.status(400).json('Invalid amount');
+    }
+
+    const passwordValid = await bcrypt.compare(password, user.password);
+    if (!passwordValid) {
+      return res.status(401).json('Invalid password');
+    }
+
+    if (requestedAmount > user.amount) {
+      return res.status(400).json("You can't withdraw more than your balance");
+    }
+
+    requestedUser.amount += requestedAmount;
+    user.amount -= requestedAmount;
+
+    const newTransaction = new Transaction({
+      from: userId,
+      to: requestedUserId,
+      amount: requestedAmount,
+    });
+
+    await user.save();
+    await requestedUser.save();
+    await newTransaction.save();
+
+    return res.json('Withdrawal successful');
+  } catch (error) {
+    return res.status(500).json('Server error');
+  }
+};
+
+module.exports = { withdraw, deposit, getAmount, transfer };
