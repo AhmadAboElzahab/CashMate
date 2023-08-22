@@ -18,6 +18,10 @@ const userSchema = new Schema({
     type: String,
     required: [true, 'Please enter your name'],
   },
+  amount: {
+    type: Number,
+    default: 0.0,
+  },
 });
 
 module.exports = mongoose.model('User', userSchema);
