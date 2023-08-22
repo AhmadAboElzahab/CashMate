@@ -15,26 +15,24 @@ const Login = () => {
   return (
     <div className=' rounded-lg flex items-center mt-[10%]  justify-center'>
       <form className=' w-80 mt-8 mx-auto ' onSubmit={handleSubmit}>
-        <img src={logo} alt='logo' className='w-[200px] mx-auto mb-10  wobble' />
-
-        <label className='block mb-2 text-glitch-white'>Email address:</label>
+        <label className='block mb-2 t'>Email address:</label>
         <input
-          className='w-full border bg-glitch-white rounded py-2 px-3 mb-4'
+          className='w-full border rounded py-2 px-3 mb-4'
           type='email'
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
 
-        <label className='block mb-2 text-glitch-white'>Password:</label>
+        <label className='block mb-2 '>Password:</label>
         <input
-          className='w-full border bg-glitch-white rounded py-2 px-3 mb-4'
+          className='w-full border  rounded py-2 px-3 mb-4'
           type='password'
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
 
         <button
-          className='w-full bg-zinc-800 lg:bg-black border-b-2 border-b-glitch-pink  text-white py-2 rounded focus:outline-none'
+          className='w-full bg-zinc-800 lg:bg-black  text-white py-2 rounded focus:outline-none'
           disabled={isLoading}
         >
           {isLoading ? 'Logging in...' : 'Log in'}
