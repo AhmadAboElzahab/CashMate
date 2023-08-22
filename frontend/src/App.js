@@ -29,7 +29,11 @@ export default function App() {
                 path='/dashboard'
                 element={user ? <DashboardLayout /> : <Navigate to='/Unauthorized' />}
               >
-                <Route index element={<Dashboard />} />
+                <Route index element={<Dashboard />}>
+                  <Route path='/Deposit' />
+                  <Route path='/withdraw' />
+                  <Route path='/Transfer' />
+                </Route>
               </Route>
             </Route>
 
