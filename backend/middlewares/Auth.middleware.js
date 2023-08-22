@@ -15,4 +15,4 @@ const Authorization = (req, res, next) => {
   }
 };
 
-module.exports = adminAuthorization;
+module.exports = Authorization;

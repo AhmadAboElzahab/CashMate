@@ -1,6 +1,6 @@
 const User = require('../models/user.model');
-const UserLog = require('../models/userlog.model'); // Make sure to import UserLog model
-const bcrypt = require('bcrypt');
+const UserLog = require('../models/personalLog.model'); // Make sure to import UserLog model
+const bcrypt = require('bcryptjs');
 
 const withdraw = async (req, res) => {
   const userId = req.userId;
@@ -95,4 +95,4 @@ const getAmount = async (req, res) => {
   }
 };
 
-module.exports = { withdraw, deposit };
+module.exports = { withdraw, deposit, getAmount };
