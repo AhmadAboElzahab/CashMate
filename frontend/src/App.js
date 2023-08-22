@@ -11,7 +11,9 @@ import ErrorPage from './Pages/ErrorPage';
 import Unauthorized from './Pages/Unauthorized';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
+import Dashboard from './Pages/Dashboard';
 import { useAuthContext } from './Hooks/useAuthContext';
+import DashboardLayout from './Layout/DashboardLayout';
 export default function App() {
   const { user } = useAuthContext();
   return (
@@ -21,8 +23,14 @@ export default function App() {
           <>
             <Route path='/' element={<MainLayout />}>
               <Route index element={<Home />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Signup />} />
+              <Route path='login' element={!user ? <Login /> : <Navigate to='/dashboard' />} />
+              <Route path='/register' element={!user ? <Signup /> : <Navigate to='/dashboard' />} />
+              <Route
+                path='/dashboard'
+                element={user ? <DashboardLayout /> : <Navigate to='/Unauthorized' />}
+              >
+                <Route index element={<Dashboard />} />
+              </Route>
             </Route>
 
             <Route path='Unauthorized' element={<Unauthorized />} />

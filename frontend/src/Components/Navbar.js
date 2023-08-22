@@ -27,11 +27,11 @@ export default function Navbar() {
                 >
                   <div
                     aria-hidden='true'
-                    className='m-auto h-0.5 w-6 rounded bg-glitch-white transition duration-300'
+                    className='m-auto h-0.5 w-6 rounded bg-black transition duration-300'
                   ></div>
                   <div
                     aria-hidden='true'
-                    className='m-auto mt-2 h-0.5 w-6 rounded bg-glitch-white transition duration-300'
+                    className='m-auto mt-2 h-0.5 w-6 rounded bg-black transition duration-300'
                   ></div>
                 </label>
 
@@ -43,14 +43,7 @@ export default function Navbar() {
                           <span className='relative text-black text-xl'>Home</span>
                         </Link>
                       </li>
-                      <li>
-                        <Link
-                          to='/shop'
-                          className='group relative  before:inset-x-0 before:bottom-0 '
-                        >
-                          <span className='relative text-black text-xl'>Shop</span>
-                        </Link>
-                      </li>
+
                       {!user ? (
                         <>
                           <li>
@@ -71,7 +64,17 @@ export default function Navbar() {
                           </li>
                         </>
                       ) : (
-                        <Logout />
+                        <>
+                          <li>
+                            <Link
+                              to='/dashboard'
+                              className='group relative  before:inset-x-0 before:bottom-0 '
+                            >
+                              <span className='relative text-black text-xl'>Dashboard</span>
+                            </Link>
+                          </li>
+                          <Logout />
+                        </>
                       )}
                     </ul>
                   </div>
