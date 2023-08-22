@@ -45,7 +45,7 @@ const withdraw = async (req, res) => {
 
 const deposit = async (req, res) => {
   const userId = req.userId;
-  const { depositedAmount, password } = req.body;
+  const { requestedAmount, password } = req.body;
 
   try {
     const user = await User.findById(userId);
@@ -53,7 +53,7 @@ const deposit = async (req, res) => {
       return res.status(404).json('User not found');
     }
 
-    if (depositedAmount < 0) {
+    if (requestedAmount < 0) {
       return res.status(400).json('Invalid amount');
     }
 
@@ -66,10 +66,10 @@ const deposit = async (req, res) => {
       userId,
       action: 'deposit',
       oldAmount: user.amount,
-      newAmount: user.amount + depositedAmount,
+      newAmount: user.amount + requestedAmount,
     });
 
-    user.amount += depositedAmount;
+    user.amount += requestedAmount;
     await user.save();
 
     await userLog.save();
