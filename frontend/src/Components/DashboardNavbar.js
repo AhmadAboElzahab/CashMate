@@ -13,10 +13,10 @@ export default function DashboardNavbar() {
 
         <div className='lg:h-screen  lg:p-20 lg:px-3'>
           <div className='lg:mx-4 font-light  flex gap-2 lg:flex-col mx-auto justify-center '>
-            <NavLink to='/'>Home</NavLink>
-            <NavLink to='/Deposit'>Deposit</NavLink>
-            <NavLink to='/withdraw'>Withdraw</NavLink>
-            <NavLink to='/Transfer'>Transfer</NavLink>
+            <NavLink to='Home'>Home</NavLink>
+            <NavLink to='Deposit'>Deposit</NavLink>
+            <NavLink to='withdraw'>Withdraw</NavLink>
+            <NavLink to='Transfer'>Transfer</NavLink>
           </div>
         </div>
       </nav>
