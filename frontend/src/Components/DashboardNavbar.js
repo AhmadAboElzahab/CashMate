@@ -3,15 +3,13 @@ import { Link } from 'react-router-dom';
 export default function DashboardNavbar() {
   return (
     <div>
-      <nav className='fixed  z-[10] w-screen text-black text-2xl bg-white border-b border-fuchsia-700 lg:border-none  py-2 lg:w-72 lg:border-r '>
+      <nav className='fixed  z-[10] w-screen text-black text-xl bg-white border-b border-fuchsia-700 lg:border-none  py-2 lg:w-72 lg:border-r '>
         <div className='mx-auto flex items-center justify-between '>
-          <div className='relative  w-full px-2 '>
-            <div className='pointer-events-none absolute inset-y-0 left-6 flex  items-center'></div>
-          </div>
           <label
             htmlFor='shopHamburger'
-            className='peer-checked:shopHamburger relative z-10  block cursor-pointer text-center text-black lg:hidden'
+            className='peer-checked:shopHamburger relative z-10 cursor-pointer flex flex-row  justify-between w-full  text-black lg:hidden pr-5'
           >
+            <span className='ml-6'>Menu</span>
             <svg
               fill='#000000'
               height='30px'
@@ -53,7 +51,7 @@ export default function DashboardNavbar() {
 
         <div className='hidden peer-checked:block lg:block lg:h-full'>
           <div className='h-screen  p-5 px-3'>
-            <div className='ml-4 font-light black flex flex-col '>
+            <div className='ml-4 font-light black flex gap-2 flex-col '>
               <Link to='/withdraw'>Home</Link>
               <Link to='/Deposit'>Deposit</Link>
               <Link to='/withdraw'>Withdraw</Link>
