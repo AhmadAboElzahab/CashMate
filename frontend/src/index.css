@@ -10,3 +10,9 @@ body {
   background-color: #f2f2f2;
   font-family: poppins;
 }
+a {
+  color: black;
+}
+a.active {
+  color: #a21caf;
+}

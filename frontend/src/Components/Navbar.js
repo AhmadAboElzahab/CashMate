@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Logout from './Logout';
 import { useAuthContext } from '../Hooks/useAuthContext';
 export default function Navbar() {
@@ -37,41 +37,24 @@ export default function Navbar() {
 
                 <div className='fixed inset-0 w-h translate-x-[-100%]  backdrop-blur-xl bg-white/50 lg:backdrop-blur-0 lg:bg-transparent	  transition duration-300 peer-checked:translate-x-0 lg:static lg:w-auto lg:translate-x-0 lg:border-r-0 '>
                   <div className='flex h-full flex-col justify-between lg:flex-row lg:items-center'>
-                    <ul className='space-y-8 px-6 pt-32  md:px-12 lg:flex lg:space-x-4 lg:space-y-0 lg:pt-0 '>
+                    <ul className='text-xl space-y-8 px-6 pt-32  md:px-12 lg:flex lg:space-x-4 lg:space-y-0 lg:pt-0 '>
                       <li>
-                        <Link to='/' className='group relative  before:inset-x-0 before:bottom-0 '>
-                          <span className='relative text-black text-xl'>Home</span>
-                        </Link>
+                        <NavLink to='/'>Home</NavLink>
                       </li>
 
                       {!user ? (
                         <>
                           <li>
-                            <Link
-                              to='/login'
-                              className='group relative before:inset-x-0 before:bottom-0'
-                            >
-                              <span className='relative text-black text-xl'>Log in</span>
-                            </Link>
+                            <NavLink to='/login'>Log in</NavLink>
                           </li>
                           <li>
-                            <Link
-                              to='/register'
-                              className='group relative before:inset-x-0 before:bottom-0'
-                            >
-                              <span className='relative text-black text-xl'>Sign up</span>
-                            </Link>
+                            <NavLink to='/register'>Sign up</NavLink>
                           </li>
                         </>
                       ) : (
                         <>
                           <li>
-                            <Link
-                              to='/dashboard'
-                              className='group relative  before:inset-x-0 before:bottom-0 '
-                            >
-                              <span className='relative text-black text-xl'>Dashboard</span>
-                            </Link>
+                            <NavLink to='/dashboard'>Dashboard</NavLink>
                           </li>
                           <Logout />
                         </>
