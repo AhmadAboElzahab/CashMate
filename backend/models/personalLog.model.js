@@ -1,22 +1,26 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const TransactionSchema = new Schema(
+const UserLogSchema = new Schema(
   {
-    from: {
+    userId: {
       type: String,
       required: true,
     },
-    to: {
+    action: {
       type: String,
       required: true,
     },
-    amount: {
-      type: String,
+    oldAmount: {
+      type: Number,
+      required: true,
+    },
+    newAmount: {
+      type: Number,
       required: true,
     },
   },
   { timestamps: true },
 );
 
-module.exports = mongoose.model('Transaction', TransactionSchema);
+module.exports = mongoose.model('UserLog', UserLogSchema);
