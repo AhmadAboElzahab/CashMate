@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export default function DashboardNavbar() {
   return (
     <div>
-      <nav className='fixed  z-[10] w-screen text-black text-xl bg-white border-b border-fuchsia-700 lg:border-none  py-2 lg:w-72 lg:border-r '>
+      <nav className='fixed  z-[10] w-screen text-black text-md bg-white border-b border-fuchsia-700 lg:border-none  py-2 lg:w-72 lg:border-r '>
         <div className='mx-auto flex items-center justify-between '>
           <label
             htmlFor='shopHamburger'
