@@ -23,7 +23,7 @@ export default function Logout() {
         onClick={logout}
         className='group relative  cursor-pointer before:inset-x-0 before:bottom-0 '
       >
-        <span className='relative text-white text-xl'>Log out</span>
+        <span className='relative text-black text-xl'>Log out</span>
       </p>
     </>
   );

@@ -13,7 +13,7 @@ const Login = () => {
   };
 
   return (
-    <div className=' rounded-lg flex items-center mt-[10%]  justify-center'>
+    <div className=' rounded-lg flex items-center mt-[10%] bg-white w-96 mx-auto  border-fuchsia-700 border  justify-center'>
       <form className=' w-80 mt-8 mx-auto ' onSubmit={handleSubmit}>
         <label className='block mb-2 t'>Email address:</label>
         <input
