@@ -18,14 +18,6 @@ const userSchema = new Schema({
     type: String,
     required: [true, 'Please enter your name'],
   },
-  role: {
-    type: String,
-    enum: ['user', 'admin'],
-    default: 'user',
-  },
-  avatar: {
-    type: String,
-  },
 });
 
 module.exports = mongoose.model('User', userSchema);
