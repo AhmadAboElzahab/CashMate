@@ -63,7 +63,7 @@ export default function Navbar() {
                           </li>
                           <li>
                             <Link
-                              to='/signup'
+                              to='/register'
                               className='group relative before:inset-x-0 before:bottom-0'
                             >
                               <span className='relative text-black text-xl'>Sign up</span>
