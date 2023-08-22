@@ -38,7 +38,7 @@ const withdraw = async (req, res) => {
 
     await userLog.save();
 
-    return res.json('Withdrawal successful');
+    return res.json('Withdrawal successful').status(200);
   } catch (error) {
     return res.status(500).json('Server error');
   }
@@ -75,7 +75,7 @@ const deposit = async (req, res) => {
 
     await userLog.save();
 
-    return res.json('Deposit successful');
+    return res.json('Deposit successful').status(200);
   } catch (error) {
     return res.status(500).json('Server error');
   }
@@ -90,7 +90,7 @@ const getAmount = async (req, res) => {
       return res.status(404).json('User not found');
     }
 
-    return res.json(user.amount);
+    return res.json(user.amount).status(200);
   } catch (error) {
     return res.status(500).json('Server error');
   }
@@ -136,7 +136,7 @@ const transfer = async (req, res) => {
     await requestedUser.save();
     await newTransaction.save();
 
-    return res.json('Withdrawal successful');
+    return res.json('Transfer successful').status(200);
   } catch (error) {
     return res.status(500).json('Server error');
   }
