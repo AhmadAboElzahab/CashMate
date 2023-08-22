@@ -12,12 +12,15 @@ root.render(
       <App />
       <ToastContainer
         position='bottom-right'
-        newestOnTop
-        hideProgressBar
-        rtl={false}
         autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
         draggable={false}
-        theme='colored'
+        pauseOnHover={false}
+        theme='dark'
       />
     </AuthContextProvider>
   </React.StrictMode>,
