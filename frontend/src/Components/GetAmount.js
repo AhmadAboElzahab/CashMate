@@ -2,9 +2,9 @@ import useSWR from 'swr';
 
 export default function GetAmount() {
   const fetcher = (...args) => fetch(...args).then((response) => response.json());
-  const { data, error } = useSWR('/api/action/amount', fetcher);
+  const { data, error, isLoading } = useSWR('/api/action/amount', fetcher);
 
-  if (!data && !error) {
+  if (isLoading) {
     return <p>Loading</p>;
   }
   if (error) {
