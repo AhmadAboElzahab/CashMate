@@ -16,8 +16,7 @@ export default function Transactions() {
 
   return (
     <>
-      <h1 className='text-4xl'>Transactions</h1>
-      <h1 className='text-2xl'>From You</h1>
+      <h1 className='text-xl p-2'>From You</h1>
       <div className='hidden lg:block '>
         <div className='flex flex-col  justify-center bg-white  text-zinc-700 px-4 py-3 text-xl rounded shadow'>
           <div className='lg:flex-row flex'>
@@ -32,7 +31,7 @@ export default function Transactions() {
         data.transactionsFromUser.map((d) => (
           <div
             key={d._id}
-            className='  justify-center bg-white text-zinc-700 px-4 py-3 text-xl rounded shadow'
+            className='  justify-center bg-white text-zinc-700 px-4 py-3  rounded shadow'
           >
             <div className='lg:flex-row flex flex-col'>
               <p className='lg:hidden font-bold'> To: </p>
@@ -47,12 +46,12 @@ export default function Transactions() {
           </div>
         ))
       ) : (
-        <p>No transactions available.</p>
+        <p className='p-2'>No transactions available.</p>
       )}
 
-      <h1 className='text-2xl'>To You</h1>
+      <h1 className=' p-2'>To You</h1>
       <div className='hidden lg:block '>
-        <div className='flex flex-col  justify-center bg-white  text-zinc-700 px-4 py-3 text-xl rounded shadow'>
+        <div className='flex flex-col  justify-center bg-white  text-zinc-700 px-4 py-3  rounded shadow'>
           <div className='lg:flex-row flex'>
             <p className='lg:w-1/3'>From</p>
             <p className='lg:w-1/3'>Amount</p>
@@ -65,7 +64,7 @@ export default function Transactions() {
         data.transactionsFromUser.map((d) => (
           <div
             key={d._id}
-            className=' justify-center bg-white text-zinc-700 px-4 py-3 text-xl rounded shadow'
+            className=' justify-center bg-white text-zinc-700 px-4 py-3  rounded shadow'
           >
             <div className='lg:flex-row flex flex-col'>
               <p className='lg:hidden font-bold'> To: </p>
@@ -80,7 +79,7 @@ export default function Transactions() {
           </div>
         ))
       ) : (
-        <p>No transactions available.</p>
+        <p className='p-2'>No transactions available.</p>
       )}
     </>
   );

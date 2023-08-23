@@ -16,10 +16,9 @@ export default function Log() {
 
   return (
     <>
-      <h1 className='text-4xl'>Log</h1>
-      <h1 className='text-2xl'>Deposit</h1>
+      <h1 className='text-xl p-2'>Deposit</h1>
       <div className='hidden lg:block '>
-        <div className='flex flex-col  justify-center bg-white  text-zinc-700 px-4 py-3 text-xl rounded shadow'>
+        <div className='flex flex-col  justify-center bg-white  text-zinc-700 px-4 py-3 rounded shadow'>
           <div className='lg:flex-row flex'>
             <p className='lg:w-1/3'>Old Amount</p>
             <p className='lg:w-1/3'>New Amount</p>
@@ -32,7 +31,7 @@ export default function Log() {
         data.depositLogs.map((d) => (
           <div
             key={d._id}
-            className='  justify-center bg-white text-zinc-700 px-4 py-3 text-xl rounded shadow'
+            className='  justify-center bg-white text-zinc-700 px-4 py-3 rounded shadow mb-4'
           >
             <div className='lg:flex-row flex flex-col'>
               <p className='lg:hidden font-bold'> Old Amount: </p>
@@ -47,12 +46,12 @@ export default function Log() {
           </div>
         ))
       ) : (
-        <p>No Log available.</p>
+        <p className='p-2'>No Log available.</p>
       )}
 
-      <h1 className='text-2xl'> Withdraw</h1>
+      <h1 className='text-xl p-2'>Withdraw</h1>
       <div className='hidden lg:block '>
-        <div className='flex flex-col  justify-center bg-white  text-zinc-700 px-4 py-3 text-xl rounded shadow'>
+        <div className='flex flex-col  justify-center bg-white  text-zinc-700 px-4 py-3 rounded shadow'>
           <div className='lg:flex-row flex'>
             <p className='lg:w-1/3'>Old Amount</p>
             <p className='lg:w-1/3'>New Amount</p>
@@ -60,12 +59,11 @@ export default function Log() {
           </div>
         </div>
       </div>
-
       {data && data.withdrawalLogs.length > 0 ? (
         data.withdrawalLogs.map((d) => (
           <div
             key={d._id}
-            className=' justify-center bg-white text-zinc-700 px-4 py-3 text-xl rounded shadow'
+            className=' justify-center bg-white text-zinc-700 px-4 py-3 rounded shadow mb-8'
           >
             <div className='lg:flex-row flex flex-col'>
               <p className='lg:hidden font-bold'> Old Amount: </p>
@@ -80,7 +78,7 @@ export default function Log() {
           </div>
         ))
       ) : (
-        <p>No Log available.</p>
+        <p className='p-2'>No Log available.</p>
       )}
     </>
   );
