@@ -4,11 +4,16 @@ import { toast } from 'react-toastify';
 export default function Settings() {
   const [newPassword, setNewPassword] = useState('');
   const [oldPassword, setOldPassword] = useState('');
+  const [RepeatedPassword, setRepeatedPassword] = useState('');
 
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChangePassword = async () => {
     if (!newPassword || !oldPassword) {
+      toast.error('Please fill in all fields.');
+      return;
+    }
+    if (RepeatedPassword != newPassword) {
       toast.error('Please fill in all fields.');
       return;
     }
@@ -32,6 +37,7 @@ export default function Settings() {
 
       setNewPassword('');
       setOldPassword('');
+      setRepeatedPassword('');
     } else {
       toast.error(json);
     }
@@ -59,6 +65,16 @@ export default function Settings() {
           }}
           value={newPassword}
           placeholder='New Password'
+        />
+        <label htmlFor='RepeatedPassword'>Repeat Password</label>
+        <input
+          className='w-full border rounded py-2 px-3 mb-4'
+          type='text'
+          onChange={(e) => {
+            setRepeatedPassword(e.target.value);
+          }}
+          value={RepeatedPassword}
+          placeholder='Repeated Password'
         />
         <button
           onClick={handleChangePassword}
