@@ -2,6 +2,7 @@ const User = require('../models/user.model');
 const Transaction = require('../models/transaction.model');
 const UserLog = require('../models/personalLog.model'); // Make sure to import UserLog model
 const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
 
 const withdraw = async (req, res) => {
   const userId = req.userId;
@@ -101,13 +102,30 @@ const transfer = async (req, res) => {
   const { requestedAmount, password, requestedUserId } = req.body;
 
   try {
+    if (requestedUserId == userId) {
+      return res.status(400).json('You cant Transfer to Your Account');
+    }
+    if (!requestedUserId) {
+      return res.status(400).json('Account Number is Required');
+    }
+    if (!mongoose.isValidObjectId(requestedUserId)) {
+      return res.status(400).json('Invalid Account Number');
+    }
+    if (!requestedAmount) {
+      return res.status(400).json('Amount is Required');
+    }
+    if (!password) {
+      return res.status(400).json('Password is Required');
+    }
+
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json('User not found');
     }
+
     const requestedUser = await User.findById(requestedUserId);
     if (!requestedUser) {
-      return res.status(404).json('User to send not found');
+      return res.status(404).json('Requested User not found');
     }
 
     if (requestedAmount < 0) {
@@ -136,10 +154,39 @@ const transfer = async (req, res) => {
     await requestedUser.save();
     await newTransaction.save();
 
-    return res.json('Transfer successful').status(200);
+    return res.status(200).json('Transfer successful');
   } catch (error) {
+    console.error(error);
     return res.status(500).json('Server error');
   }
 };
+
+
+const changePassword = async (req, res) => {
+  const userId = req.userId;
+  const { oldPassword, newPassword } = req.body;
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const isPasswordMatch = await user.comparePassword(oldPassword);
+
+    if (!isPasswordMatch) {
+      return res.status(401).json({ message: 'Invalid old password' });
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    res.status(200).json({ message: 'Password changed successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'An error occurred' });
+  }
+};
+
 
 module.exports = { withdraw, deposit, getAmount, transfer };
