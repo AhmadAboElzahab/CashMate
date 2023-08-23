@@ -64,6 +64,7 @@ export default function Transfer() {
 
   return (
     <>
+      <h1 className='text-2xl'>Transfer</h1>
       <GetAmount />
       <div className='bg-white rounded shadow px-4 py-5 '>
         <label htmlFor='amount'>Account Number</label>

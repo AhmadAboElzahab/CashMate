@@ -3,6 +3,7 @@ import Dashboard from '../Components/Dashboard';
 export default function TabLayout() {
   return (
     <>
+      <h1 className='text-2xl'>Dashboard</h1>
       <Dashboard />
       <div className='text-xl flex flex-row justify-center'>
         <NavLink to='Transactions' className='mx-3'>

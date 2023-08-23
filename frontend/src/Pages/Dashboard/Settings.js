@@ -45,6 +45,7 @@ export default function Settings() {
 
   return (
     <>
+      <h1 className='text-2xl'>Settings</h1>
       <div className='bg-white rounded shadow px-4 py-5 '>
         <label htmlFor='oldPassword'>Old Password</label>
         <input
