@@ -22,6 +22,7 @@ import Settings from './Pages/Dashboard/Settings';
 import TabLayout from './Layout/TabLayout';
 import Transactions from './Components/Transactions';
 import Log from './Components/Log';
+import RequestPayment from './Pages/RequestPayment';
 
 export default function App() {
   const { user } = useAuthContext();
@@ -50,6 +51,7 @@ export default function App() {
                 <Route path='settings' element={<Settings />} />
               </Route>
             </Route>
+            <Route path='requestpayment' element={<RequestPayment />} />
 
             <Route path='unauthorized' element={<Unauthorized />} />
             <Route path='*' element={<ErrorPage />} />
