@@ -7,6 +7,7 @@ const {
   transfer,
   changePassword,
   getTransactions,
+  getLog,
 } = require('../controllers/Action.controller');
 
 const router = express.Router();
@@ -19,5 +20,6 @@ router.post('/deposit', deposit);
 router.get('/amount', getAmount);
 router.get('/transaction', getTransactions);
 router.post('/change', changePassword);
+router.get('/Log', getLog);
 
 module.exports = router;

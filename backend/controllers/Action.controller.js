@@ -198,8 +198,25 @@ const getTransactions = async (req, res) => {
   }
 };
 
-module.exports = {
-  getTransactions,
+const getLog = async (req, res) => {
+  const userId = req.userId;
+
+  try {
+    const depositLogs = await UserLog.find({ userId, action: 'deposit' });
+    const withdrawalLogs = await UserLog.find({ userId, action: 'withdrawal' });
+
+    res.json({ depositLogs, withdrawalLogs });
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while fetching log.' });
+  }
 };
 
-module.exports = { withdraw, getTransactions, deposit, getAmount, transfer, changePassword };
+module.exports = {
+  withdraw,
+  getTransactions,
+  getLog,
+  deposit,
+  getAmount,
+  transfer,
+  changePassword,
+};
