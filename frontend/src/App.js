@@ -14,11 +14,14 @@ import Login from './Pages/Login';
 import { useAuthContext } from './Hooks/useAuthContext';
 import DashboardLayout from './Layout/DashboardLayout';
 
-import Dashboard from './Pages/Dashboard/Dashboard';
+import Dashboard from './Components/Dashboard';
 import Withdraw from './Pages/Dashboard/Withdraw';
 import Deposit from './Pages/Dashboard/Deposit';
 import Transfer from './Pages/Dashboard/Transfer';
 import Settings from './Pages/Dashboard/Settings';
+import TabLayout from './Layout/TabLayout';
+import Transactions from './Components/Transactions';
+import Log from './Components/Log';
 
 export default function App() {
   const { user } = useAuthContext();
@@ -36,7 +39,11 @@ export default function App() {
                 element={user ? <DashboardLayout /> : <Navigate to='/Unauthorized' />}
               >
                 <Route index element={<Navigate to='home' replace={true} />} />
-                <Route path='home' element={<Dashboard />} />
+                <Route path='home' element={<TabLayout />}>
+                  <Route index element={<Navigate to='transactions' replace={true} />} />
+                  <Route path='transactions' element={<Transactions />} />
+                  <Route path='Log' element={<Log />} />
+                </Route>
                 <Route path='deposit' element={<Deposit />} />
                 <Route path='withdraw' element={<Withdraw />} />
                 <Route path='transfer' element={<Transfer />} />
