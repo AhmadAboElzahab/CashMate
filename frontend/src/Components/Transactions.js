@@ -1,6 +1,7 @@
 import useSWR from 'swr';
-
-export default function GetAmount() {
+import { useAuthContext } from '../Hooks/useAuthContext';
+export default function Transactions() {
+  const { user } = useAuthContext();
   const fetcher = (...args) => fetch(...args).then((response) => response.json());
   const { data, error, isLoading } = useSWR('/api/action/amount', fetcher);
 
@@ -13,7 +14,18 @@ export default function GetAmount() {
 
   return (
     <div className='bg-white my-4 text-zinc-700 px-4 py-3 text-xl rounded shadow'>
-      <p>Credit : {data} $</p>
+      <p>Transactions</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        
+      </table>
     </div>
   );
 }

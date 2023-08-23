@@ -182,4 +182,24 @@ const changePassword = async (req, res) => {
   }
 };
 
-module.exports = { withdraw, deposit, getAmount, transfer, changePassword };
+const getTransactions = async (req, res) => {
+  const userId = req.userId;
+
+  try {
+    const transactionsFromUser = await Transaction.find({ from: userId });
+    const transactionsToUser = await Transaction.find({ to: userId });
+
+    res.status(200).json({
+      transactionsFromUser,
+      transactionsToUser,
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while fetching transactions.' });
+  }
+};
+
+module.exports = {
+  getTransactions,
+};
+
+module.exports = { withdraw, getTransactions, deposit, getAmount, transfer, changePassword };
