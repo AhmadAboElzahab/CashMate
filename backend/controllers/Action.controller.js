@@ -160,30 +160,25 @@ const transfer = async (req, res) => {
     return res.status(500).json('Server error');
   }
 };
-
 const changePassword = async (req, res) => {
   const userId = req.userId;
   const { oldPassword, newPassword } = req.body;
 
   try {
     const user = await User.findById(userId);
-
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json('User not found');
     }
-
-    const isPasswordMatch = await bcrypt.compare(password, this.password);
-
+    const isPasswordMatch = await bcrypt.compare(oldPassword, user.password);
     if (!isPasswordMatch) {
-      return res.status(401).json({ message: 'Invalid old password' });
+      return res.status(401).json('Invalid old password');
     }
-
-    user.password = newPassword;
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedNewPassword;
     await user.save();
-
-    res.status(200).json({ message: 'Password changed successfully' });
+    res.status(200).json('Password changed successfully');
   } catch (error) {
-    res.status(500).json({ message: 'An error occurred' });
+    res.status(500).json('An error occurred');
   }
 };
 
