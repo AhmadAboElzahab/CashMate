@@ -18,6 +18,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import Withdraw from './Pages/Dashboard/Withdraw';
 import Deposit from './Pages/Dashboard/Deposit';
 import Transfer from './Pages/Dashboard/Transfer';
+import Settings from './Pages/Dashboard/Settings';
 
 export default function App() {
   const { user } = useAuthContext();
@@ -39,6 +40,7 @@ export default function App() {
                 <Route path='deposit' element={<Deposit />} />
                 <Route path='withdraw' element={<Withdraw />} />
                 <Route path='transfer' element={<Transfer />} />
+                <Route path='settings' element={<Settings />} />
               </Route>
             </Route>
 

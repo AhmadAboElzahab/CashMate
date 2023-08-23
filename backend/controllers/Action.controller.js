@@ -161,7 +161,6 @@ const transfer = async (req, res) => {
   }
 };
 
-
 const changePassword = async (req, res) => {
   const userId = req.userId;
   const { oldPassword, newPassword } = req.body;
@@ -173,7 +172,7 @@ const changePassword = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    const isPasswordMatch = await user.comparePassword(oldPassword);
+    const isPasswordMatch = await bcrypt.compare(password, this.password);
 
     if (!isPasswordMatch) {
       return res.status(401).json({ message: 'Invalid old password' });
@@ -188,5 +187,4 @@ const changePassword = async (req, res) => {
   }
 };
 
-
-module.exports = { withdraw, deposit, getAmount, transfer };
+module.exports = { withdraw, deposit, getAmount, transfer, changePassword };

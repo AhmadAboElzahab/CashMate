@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { BiHomeAlt2, BiMoneyWithdraw } from 'react-icons/bi';
 import { TbMoneybag } from 'react-icons/tb';
 import { BsArrowLeftRight } from 'react-icons/bs';
+import { IoSettingsOutline } from 'react-icons/io5';
 
 export default function DashboardNavbar() {
   return (
@@ -41,6 +42,13 @@ export default function DashboardNavbar() {
             >
               <BsArrowLeftRight className='lg:hidden' size={30} />
               Transfer
+            </NavLink>
+            <NavLink
+              to='settings'
+              className='flex flex-col items-center justify-center lg:justify-start lg:items-start'
+            >
+              <IoSettingsOutline className='lg:hidden' size={30} />
+              Settings
             </NavLink>
           </div>
         </div>
