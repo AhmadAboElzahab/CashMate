@@ -13,8 +13,8 @@ export default function Settings() {
       toast.error('Please fill in all fields.');
       return;
     }
-    if (RepeatedPassword != newPassword) {
-      toast.error('Please fill in all fields.');
+    if (RepeatedPassword !== newPassword) {
+      toast.error('Passwords Are not Matched');
       return;
     }
     setIsLoading(true);
