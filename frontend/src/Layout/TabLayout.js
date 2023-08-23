@@ -12,7 +12,7 @@ export default function TabLayout() {
           Log
         </NavLink>
       </div>
-      <div>
+      <div className='overflow-scroll pb-10'>
         <Outlet />
       </div>
     </>

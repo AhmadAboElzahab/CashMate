@@ -9,7 +9,7 @@ export default function DashboardNavbar() {
     <div>
       <nav
         className='py-2 lg:py-0 fixed bottom-0 z-[10] w-screen
-       bg-white   text-md  lg:border-none  lg:w-72 lg:border-r 
+       bg-white  border-t border-fuchsia-700 text-md  lg:border-none  lg:w-72 lg:border-r 
        
        '
       >
