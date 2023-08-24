@@ -56,10 +56,10 @@ export default function PaymentResponseHandler() {
   };
 
   const handlePaymentApproval = () => {
+    console.log('Payment approved message sent.');
     window.opener.postMessage({ paymentApproved: true }, '*');
     window.close();
   };
-
   return (
     <div>
       <div className='font-extrabold text-2xl bg-white  p-5  w-full'>
