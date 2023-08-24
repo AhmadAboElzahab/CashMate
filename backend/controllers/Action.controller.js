@@ -211,6 +211,61 @@ const getLog = async (req, res) => {
   }
 };
 
+const pay = async (req, res) => {
+  const userId = req.userId;
+  const { requestedAmount, requestedUserId } = req.body;
+
+  try {
+    if (requestedUserId == userId) {
+      return res.status(400).json('You cant Transfer to Your Account');
+    }
+    if (!requestedUserId) {
+      return res.status(400).json('Account Number is Required');
+    }
+    if (!mongoose.isValidObjectId(requestedUserId)) {
+      return res.status(400).json('Invalid Account Number');
+    }
+    if (!requestedAmount) {
+      return res.status(400).json('Amount is Required');
+    }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json('User not found');
+    }
+
+    const requestedUser = await User.findById(requestedUserId);
+    if (!requestedUser) {
+      return res.status(404).json('Requested User not found');
+    }
+
+    if (requestedAmount < 0) {
+      return res.status(400).json('Invalid amount');
+    }
+
+    if (requestedAmount > user.amount) {
+      return res.status(400).json('You can not send more than your balance');
+    }
+
+    requestedUser.amount += requestedAmount;
+    user.amount -= requestedAmount;
+
+    const newTransaction = new Transaction({
+      from: userId,
+      to: requestedUserId,
+      amount: requestedAmount,
+    });
+
+    await user.save();
+    await requestedUser.save();
+    await newTransaction.save();
+
+    return res.status(200).json('Transfer successful');
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json('Server error');
+  }
+};
 module.exports = {
   withdraw,
   getTransactions,
@@ -219,4 +274,5 @@ module.exports = {
   getAmount,
   transfer,
   changePassword,
+  pay,
 };
