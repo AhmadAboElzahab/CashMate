@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import CryptoJS from 'crypto-js';
-
+import { useLocation, useNavigate } from 'react-router-dom';
 export default function PaymentResponseHandler() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const [ID, setID] = useState('');
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -40,7 +43,7 @@ export default function PaymentResponseHandler() {
   return (
     <div>
       <div className='font-extrabold text-2xl bg-white px-5 p-5 w-full'>
-        Cache <span className='text-fuchsia-700'>Mate</span>
+        Cash <span className='text-fuchsia-700'>Mate</span>
       </div>
       <div className='text-center text-xl'>
         <h1>You are Paying {price} $</h1>

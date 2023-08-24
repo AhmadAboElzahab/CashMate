@@ -14,7 +14,6 @@ import Login from './Pages/Login';
 import { useAuthContext } from './Hooks/useAuthContext';
 import DashboardLayout from './Layout/DashboardLayout';
 
-import Dashboard from './Components/Dashboard';
 import Withdraw from './Pages/Dashboard/Withdraw';
 import Deposit from './Pages/Dashboard/Deposit';
 import Transfer from './Pages/Dashboard/Transfer';
@@ -51,7 +50,16 @@ export default function App() {
                 <Route path='settings' element={<Settings />} />
               </Route>
             </Route>
-            <Route path='requestpayment' element={<RequestPayment />} />
+            <Route
+              path='requestpayment'
+              element={
+                user ? (
+                  <RequestPayment />
+                ) : (
+                  <Navigate to='/login' state={{ from: window.location.href }} />
+                )
+              }
+            />
 
             <Route path='unauthorized' element={<Unauthorized />} />
             <Route path='*' element={<ErrorPage />} />

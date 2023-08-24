@@ -10,7 +10,7 @@ export default function Navbar() {
           <div className='px-6  md:px-12 lg:px-6 w-full lg:py-4'>
             <div className='flex items-center justify-between '>
               <div className='relative z-30  font-extrabold text-2xl  w-full '>
-                Cache <span className='text-fuchsia-700'>Mate</span>
+                Cash <span className='text-fuchsia-700'>Mate</span>
               </div>
 
               <div className='flex items-center w-full  justify-end '>
