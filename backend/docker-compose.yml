@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: node-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3006:3006'
+    environment:
+      PORT: 3006
+      DB_CONNECT: mongodb://mongo:27017
+      SECRET_KEY: shdas£@$@£dsadj$1231sad2
+      TERM: xterm-256color
+
+    depends_on:
+      - mongo
+
+  mongo:
+    container_name: mongodb
+    image: mongo:5.0
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express:1.0.0-alpha.4
+    restart: always
+    ports:
+      - '8081:8081'
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
+
+volumes:
+  mongo-data:
